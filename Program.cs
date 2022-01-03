@@ -39,9 +39,39 @@ namespace FirstBankOfSuncoast
             }
         }
 
+        static void DisplayMenu()
+        {
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("PLEASE MAKE A SELECTION: ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("--------------------------------------");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("(1) View Account Balances");
+            Console.WriteLine("(2) Deposit Funds");
+            Console.WriteLine("(3) Withdraw Funds");
+            Console.WriteLine("(4) View Transaction History");
+            Console.WriteLine("(5) Quit");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("--------------------------------------");
+            Console.WriteLine("");
+
+
+        }
+        // - deposit to savings
+        // - deposit to checking
+        // - withdraw from savings
+        // - withdraw from checking
+        // - view balance of savings and checking
+        // - view transaction history
+
+
+
         static void Main(string[] args)
         {
             DisplayGreeting();
+
+            DisplayMenu();
         }
     }
 }
