@@ -1,7 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FirstBankOfSuncoast
 {
+    class Transaction
+    {
+        public string Account { get; set; }
+        public string Amount { get; set; }
+        public string TransactionType { get; set; }
+    }
+
     class Program
     {
         static void DisplayGreeting()
@@ -58,20 +66,44 @@ namespace FirstBankOfSuncoast
 
 
         }
-        // - deposit to savings
-        // - deposit to checking
-        // - withdraw from savings
-        // - withdraw from checking
-        // - view balance of savings and checking
-        // - view transaction history
-
-
 
         static void Main(string[] args)
         {
             DisplayGreeting();
 
             DisplayMenu();
+
+            var transactions = new List<Transaction>();
+
         }
     }
 }
+// ALGORITHM
+// Load past transactions from csv file.
+
+// Create a list to store transaction history.
+// Create a class called `Transaction`
+// - Properties:
+//   - savings
+//   - checking
+// - Behaviors/Methods:
+//   - deposit
+//   - withdraw
+// If user selects `deposit to savings`
+// - prompt user to input amount (PromptForInteger)
+// - add to savings history
+// - update balance
+// If user selects `deposit to checking`
+// - prompt user to input amount (PromptForInteger)
+// - add to checking history
+// - update balance
+// If user selects `withdraw from savings`
+// - prompt user to input amount (PromptForInteger)
+// - add amount to savings history
+// - update balance
+//   - if withdrawal would make balance < 0, display error message
+// If user selects `withdraw from checking`
+// - prompt user to input amount (PromptForInteger)
+// - add to checking history
+// - update balance
+//   - if withdrawal would make balance < 0, display error message
