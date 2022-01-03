@@ -1,0 +1,81 @@
+PROBLEM
+Create an bank account manager app that tracks savings and checking. Should perform withdrawals, deposits,
+and transfers and should save all data in a file to track account history. 
+
+EXAMPLES
+User deposits 10 to savings
+     withdraws 8 from savings
+     deposits 25 to checking
+
+     total transactions = 3
+     - savings balance = 2
+     - checking balance = 25
+
+DATA
+List<Transactions>
+- stores transaction history
+class Transactions
+- Properties: 
+  - savings
+  - checking
+CsvHelper
+- to load transaction history every time app runs
+Methods
+- Display Greeting
+- Display Menu
+  - deposit to savings
+  - deposit to checking
+  - withdraw from savings
+  - withdraw from checking
+  - view balance of savings and checking
+- PromptForString
+- PromptForInteger
+- InsufficientFundsMessage
+If/else statements
+foreach loop to view list of all `savings` and `checking` transactions
+LINQ
+
+ALGORITHM
+Load past transactions from csv file.
+DisplayGreeting()
+DisplayMenu()
+- deposit to savings
+- deposit to checking
+- withdraw from savings
+- withdraw from checking
+- view balance of savings and checking
+- view transaction history
+Create a list to store transaction history.
+Create a class called `Transaction`
+- Properties:
+  - savings
+  - checking
+- Behaviors/Methods:
+  - deposit
+  - withdraw
+If user selects `deposit to savings`
+- prompt user to input amount (PromptForInteger)
+- add to savings history
+- update balance
+If user selects `deposit to checking`
+- prompt user to input amount (PromptForInteger)
+- add to checking history
+- update balance
+If user selects `withdraw from savings`
+- prompt user to input amount (PromptForInteger)
+- add amount to savings history
+- update balance
+  - if withdrawal would make balance < 0, display error message
+If user selects `withdraw from checking`
+- prompt user to input amount (PromptForInteger)
+- add to checking history
+- update balance
+  - if withdrawal would make balance < 0, display error message
+
+  
+
+** as a menu option? or in the csv file? I think as menu option
+- As a user I should be able to see the list of transactions designated savings.
+- As a user I should be able to see the list of transactions designated checking.
+
+
