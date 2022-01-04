@@ -59,15 +59,15 @@ namespace FirstBankOfSuncoast
             Console.WriteLine("");
         }
 
-        private static int ComputeCheckingBalance(List<Transaction> transactions)
-        {
-            var totalCheckingDeposits = transactions.Where(transaction => transaction.Account == "Checking" && transaction.Type == "Deposit")
-                                                    .Sum(transaction => transaction.Amount);
-            var totalCheckingWithdraw = transactions.Where(transaction => transaction.Account == "Checking" && transaction.Type == "Withdraw")
-                                                    .Sum(transaction => transaction.Amount);
-            var totalChecking = totalCheckingDeposits - totalCheckingWithdraw;
-            return totalChecking;
-        }
+        // private static int ComputeCheckingBalance(List<Transaction> transactions)
+        // {
+        //     var totalCheckingDeposits = transactions.Where(transaction => transaction.Account == "Checking" && transaction.Type == "Deposit")
+        //                                             .Sum(transaction => transaction.Amount);
+        //     var totalCheckingWithdraw = transactions.Where(transaction => transaction.Account == "Checking" && transaction.Type == "Withdraw")
+        //                                             .Sum(transaction => transaction.Amount);
+        //     var totalChecking = totalCheckingDeposits - totalCheckingWithdraw;
+        //     return totalChecking;
+        // }
 
 
         static void Main(string[] args)
@@ -101,7 +101,12 @@ namespace FirstBankOfSuncoast
                 switch (choice)
                 {
                     case "B":
-                        int totalChecking = ComputeCheckingBalance(transactions);
+                        // int totalChecking = ComputeCheckingBalance(transactions);
+                        var totalCheckingDeposits = transactions.Where(transaction => transaction.Account == "Checking" && transaction.Type == "Deposit")
+                                                    .Sum(transaction => transaction.Amount);
+                        var totalCheckingWithdraw = transactions.Where(transaction => transaction.Account == "Checking" && transaction.Type == "Withdraw")
+                                                                .Sum(transaction => transaction.Amount);
+                        var totalChecking = totalCheckingDeposits - totalCheckingWithdraw;
                         // var checkingBalance = transactions.
                         // int checkingBalance = 
                         Console.WriteLine("");
@@ -146,14 +151,49 @@ namespace FirstBankOfSuncoast
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("");
-                            Console.WriteLine("❗That is not a valid selection. Try again❗");
+                            Console.WriteLine("❗That is not a valid selection❗");
                         }
-
-
-
                         break;
 
                     case "W":
+                        Console.WriteLine("");
+                        Console.WriteLine("Would you like to withdraw funds from your [C]hecking or [S]avings account? ");
+                        var withdrawalAccountChoice = Console.ReadLine().ToUpper();
+
+                        if (withdrawalAccountChoice == "C")
+                        {
+                            var checkingWithdrawal = new Transaction();
+
+                            Console.WriteLine("");
+                            checkingWithdrawal.Date = DateTime.Now;
+                            checkingWithdrawal.Account = "Checking";
+                            checkingWithdrawal.Type = "Withdrawal";
+                            checkingWithdrawal.Amount = PromptForInteger("How much would you like to withdraw from your checking account? ");
+                            Console.WriteLine("");
+                            Console.WriteLine($"${checkingWithdrawal.Amount} has been withdrawn from your checking account. ");
+
+                            transactions.Add(checkingWithdrawal);
+                        }
+                        else if (withdrawalAccountChoice == "S")
+                        {
+                            var savingsWithdrawal = new Transaction();
+
+                            Console.WriteLine("");
+                            savingsWithdrawal.Date = DateTime.Now;
+                            savingsWithdrawal.Account = "Savings";
+                            savingsWithdrawal.Type = "Withdrawal";
+                            savingsWithdrawal.Amount = PromptForInteger("How much would you like to withdraw from your savings account? ");
+                            Console.WriteLine("");
+                            Console.WriteLine($"${savingsWithdrawal.Amount} has been withdrawn from your savings account. ");
+
+                            transactions.Add(savingsWithdrawal);
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("");
+                            Console.WriteLine("❗That is not a valid selection❗");
+                        }
                         break;
 
                     case "T":
