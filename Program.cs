@@ -49,11 +49,11 @@ namespace FirstBankOfSuncoast
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("--------------------------------------");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("[B]ALANCES");
-            Console.WriteLine("[D]EPOSIT");
-            Console.WriteLine("[W]ITHDRAW");
-            Console.WriteLine("[T]RANSACTION HISTORY");
-            Console.WriteLine("[Q]UIT");
+            Console.WriteLine("[C]heck Balances");
+            Console.WriteLine("[D]eposit Funds");
+            Console.WriteLine("[W]ithdraw Funds");
+            Console.WriteLine("[V]iew Transaction History");
+            Console.WriteLine("[Q]uit");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("--------------------------------------");
             Console.WriteLine("");
@@ -100,18 +100,24 @@ namespace FirstBankOfSuncoast
 
                 switch (choice)
                 {
-                    case "B":
+                    case "C":
                         // int totalChecking = ComputeCheckingBalance(transactions);
                         var totalCheckingDeposits = transactions.Where(transaction => transaction.Account == "Checking" && transaction.Type == "Deposit")
                                                     .Sum(transaction => transaction.Amount);
-                        var totalCheckingWithdraw = transactions.Where(transaction => transaction.Account == "Checking" && transaction.Type == "Withdraw")
+                        var totalCheckingWithdrawals = transactions.Where(transaction => transaction.Account == "Checking" && transaction.Type == "Withdrawal")
                                                                 .Sum(transaction => transaction.Amount);
-                        var totalChecking = totalCheckingDeposits - totalCheckingWithdraw;
+                        var totalChecking = totalCheckingDeposits - totalCheckingWithdrawals;
+
+                        var totalSavingsDeposits = transactions.Where(transaction => transaction.Account == "Savings" && transaction.Type == "Deposit")
+                                                               .Sum(transaction => transaction.Amount);
+                        var totalSavingsWithdrawals = transactions.Where(transaction => transaction.Account == "Savings" && transaction.Type == "Withdrawal")
+                                                                  .Sum(transaction => transaction.Amount);
+                        var totalSavings = totalSavingsDeposits - totalSavingsWithdrawals;
                         // var checkingBalance = transactions.
                         // int checkingBalance = 
                         Console.WriteLine("");
-                        Console.WriteLine("Checking Account: ${totalChecking}");
-                        Console.WriteLine("Savings Account: ${}");
+                        Console.WriteLine($"Checking Account: ${totalChecking}");
+                        Console.WriteLine($"Savings Account: ${totalSavings}");
                         break;
 
                     case "D":
@@ -196,7 +202,7 @@ namespace FirstBankOfSuncoast
                         }
                         break;
 
-                    case "T":
+                    case "V":
                         break;
 
                     case "Q":
