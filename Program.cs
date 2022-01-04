@@ -75,20 +75,24 @@ namespace FirstBankOfSuncoast
             DisplayGreeting();
 
             var transactions = new List<Transaction>();
+
+            // TEST DATA
+            var testTransaction = new Transaction()
             {
-                var firstCheckingDeposit = new Transaction()
-                {
-                    Amount = 10,
-                    Account = "Checking",
-                    Type = "Deposit"
-                };
-                var firstSavingsDeposit = new Transaction()
-                {
-                    Amount = 10,
-                    Account = "Savings",
-                    Type = "Deposit"
-                };
+                Date = DateTime.Now,
+                Amount = 10,
+                Account = "Checking",
+                Type = "Deposit"
             };
+            transactions.Add(testTransaction);
+            var testTransaction1 = new Transaction()
+            {
+                Date = DateTime.Now,
+                Amount = 10,
+                Account = "Savings",
+                Type = "Deposit"
+            };
+            transactions.Add(testTransaction1);
 
             var keepGoing = true;
 
