@@ -59,16 +59,20 @@ namespace FirstBankOfSuncoast
             Console.WriteLine("");
         }
 
-        // private static int ComputeCheckingBalance(List<Transaction> transactions)
+        // static void Description(Transaction viewTransactions)
         // {
-        //     var totalCheckingDeposits = transactions.Where(transaction => transaction.Account == "Checking" && transaction.Type == "Deposit")
-        //                                             .Sum(transaction => transaction.Amount);
-        //     var totalCheckingWithdraw = transactions.Where(transaction => transaction.Account == "Checking" && transaction.Type == "Withdraw")
-        //                                             .Sum(transaction => transaction.Amount);
-        //     var totalChecking = totalCheckingDeposits - totalCheckingWithdraw;
-        //     return totalChecking;
+        //     Console.WriteLine($"{viewTransactions.Date: MM/dd/yyyy} {viewTransactions.Account} {viewTransactions.Type} {viewTransactions.Amount} ");
         // }
 
+        // private int ComputeCheckingBalance(List<Transaction> transactions)
+        // {
+        //     var totalCheckingDeposits = transactions.Where(transaction => transaction.Account == "Checking" && transaction.Type == "Deposit")
+        //                                                         .Sum(transaction => transaction.Amount);
+        //     var totalCheckingWithdrawals = transactions.Where(transaction => transaction.Account == "Checking" && transaction.Type == "Withdrawal")
+        //                                             .Sum(transaction => transaction.Amount);
+        //     var totalChecking = totalCheckingDeposits - totalCheckingWithdrawals;
+        //     return totalChecking;
+        // }
 
         static void Main(string[] args)
         {
@@ -93,6 +97,14 @@ namespace FirstBankOfSuncoast
                 Type = "Deposit"
             };
             transactions.Add(testTransaction1);
+            var testTransaction2 = new Transaction()
+            {
+                Date = DateTime.Now,
+                Amount = 5,
+                Account = "Checking",
+                Type = "Withdrawal"
+            };
+            transactions.Add(testTransaction2);
 
             var keepGoing = true;
 
@@ -119,7 +131,11 @@ namespace FirstBankOfSuncoast
                         var totalSavings = totalSavingsDeposits - totalSavingsWithdrawals;
                         // var checkingBalance = transactions.
                         // int checkingBalance = 
+                        // int totalChecking = ComputeCheckingBalance(transactions);
                         Console.WriteLine("");
+                        Console.WriteLine("ACCOUNT BALANCES:");
+                        Console.WriteLine("💸💸💸💸💸💸💸💸💸💸💸💸💸💸💸💸💸💸💸💸💸💸💸💸");
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine($"Checking Account: ${totalChecking}");
                         Console.WriteLine($"Savings Account: ${totalSavings}");
                         break;
@@ -207,6 +223,27 @@ namespace FirstBankOfSuncoast
                         break;
 
                     case "V":
+                        // Description();
+                        Console.WriteLine("");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("TRANSACTION HISTORY: ");
+
+                        foreach (var transaction in transactions)
+                        {
+                            if (transaction.Type == "Deposit")
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("");
+                                Console.WriteLine($"{transaction.Date: M/dd/yyyy} {transaction.Type} to {transaction.Account}: ${transaction.Amount} ");
+                            }
+                            else if (transaction.Type == "Withdrawal")
+                            {
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.WriteLine("");
+                                Console.WriteLine($"{transaction.Date: M/dd/yyyy} {transaction.Type} from {transaction.Account}: ${transaction.Amount} ");
+                            }
+                        }
+                        Console.WriteLine("");
                         break;
 
                     case "Q":

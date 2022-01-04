@@ -8,7 +8,10 @@ namespace FirstBankOfSuncoast
         public string Account { get; set; }
         public string Type { get; set; }
         public int Amount { get; set; }
+
+
     }
+
 }
 // ALGORITHM
 // Load past transactions from csv file.
