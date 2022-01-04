@@ -34,9 +34,9 @@ namespace FirstBankOfSuncoast
         {
             Console.Write(prompt);
             int userInput;
-            var isthisGoodInput = Int32.TryParse(Console.ReadLine(), out userInput);
+            var isThisGoodInput = Int32.TryParse(Console.ReadLine(), out userInput);
 
-            if (isthisGoodInput)
+            if (isThisGoodInput)
             {
                 return userInput;
             }
@@ -71,39 +71,53 @@ namespace FirstBankOfSuncoast
         {
             DisplayGreeting();
 
-            DisplayMenu();
-
             var transactions = new List<Transaction>();
 
+            var keepGoing = true;
+
+            while (keepGoing)
+            {
+                DisplayMenu();
+
+                var choice = Console.ReadLine().ToUpper();
+
+                switch (choice)
+                {
+                    case "1":
+
+                        // VIEW ACCOUNT BALANCES.
+                        // If user selects `deposit to savings`
+                        // - prompt user to input amount (PromptForInteger)
+                        // - add to savings history
+                        // - update balance
+                        // If user selects `deposit to checking`
+                        // - prompt user to input amount (PromptForInteger)
+                        // - add to checking history
+                        // - update balance
+                        // If user selects `withdraw from savings`
+                        // - prompt user to input amount (PromptForInteger)
+                        // - add amount to savings history
+                        // - update balance
+                        //   - if withdrawal would make balance < 0, display error message
+                        // If user selects `withdraw from checking`
+                        // - prompt user to input amount (PromptForInteger)
+                        // - add to checking history
+                        // - update balance
+                        //   - if withdrawal would make balance < 0, display error message
+                        break;
+
+                    default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("");
+                        Console.WriteLine("❗That is not a valid selection. Try again❗");
+                        break;
+                }
+            }
         }
     }
 }
 // ALGORITHM
 // Load past transactions from csv file.
 
-// Create a list to store transaction history.
-// Create a class called `Transaction`
-// - Properties:
-//   - savings
-//   - checking
-// - Behaviors/Methods:
-//   - deposit
-//   - withdraw
-// If user selects `deposit to savings`
-// - prompt user to input amount (PromptForInteger)
-// - add to savings history
-// - update balance
-// If user selects `deposit to checking`
-// - prompt user to input amount (PromptForInteger)
-// - add to checking history
-// - update balance
-// If user selects `withdraw from savings`
-// - prompt user to input amount (PromptForInteger)
-// - add amount to savings history
-// - update balance
-//   - if withdrawal would make balance < 0, display error message
-// If user selects `withdraw from checking`
-// - prompt user to input amount (PromptForInteger)
-// - add to checking history
-// - update balance
-//   - if withdrawal would make balance < 0, display error message
+
+

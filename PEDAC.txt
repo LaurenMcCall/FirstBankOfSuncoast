@@ -48,8 +48,9 @@ DisplayMenu()
 Create a list to store transaction history.
 Create a class called `Transaction`
 - Properties:
-  - savings
-  - checking
+  - amount
+  - type
+  - account
 - Behaviors/Methods:
   - deposit
   - withdraw
