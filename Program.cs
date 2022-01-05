@@ -1,11 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using CsvHelper;
 
 namespace FirstBankOfSuncoast
 {
     class Program
     {
+        //  private string FileName = "transaction.csv";
+        static void LoadTransactions(List<Transaction> transactions)
+        {
+            if (File.Exists("transactions.csv"))
+            {
+                var fileReader = new StreamReader("transactions.csv");
+
+                var csvReader = new CsvReader(fileReader, CultureInfo.InvariantCulture);
+
+                var transactionFile = csvReader.GetRecords<Transaction>().ToList();
+
+                fileReader.Close();
+            }
+        }
+
+        static void SaveTransactions(List<Transaction> transactions)
+        {
+            var fileWriter = new StreamWriter("transactions.csv");
+
+            var csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
+
+            csvWriter.WriteRecords(transactions);
+
+            fileWriter.Close();
+        }
+
         static void DisplayGreeting()
         {
             Console.WriteLine("");
@@ -57,7 +86,11 @@ namespace FirstBankOfSuncoast
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("--------------------------------------");
             Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.White;
         }
+
+
+
 
         // static void Description(Transaction viewTransactions)
         // {
@@ -81,35 +114,37 @@ namespace FirstBankOfSuncoast
             var transactions = new List<Transaction>();
 
             // TEST DATA
-            var testTransaction = new Transaction()
-            {
-                Date = DateTime.Now,
-                Amount = 10,
-                Account = "Checking",
-                Type = "Deposit"
-            };
-            transactions.Add(testTransaction);
-            var testTransaction1 = new Transaction()
-            {
-                Date = DateTime.Now,
-                Amount = 10,
-                Account = "Savings",
-                Type = "Deposit"
-            };
-            transactions.Add(testTransaction1);
-            var testTransaction2 = new Transaction()
-            {
-                Date = DateTime.Now,
-                Amount = 5,
-                Account = "Checking",
-                Type = "Withdrawal"
-            };
-            transactions.Add(testTransaction2);
+            // var testTransaction = new Transaction()
+            // {
+            //     Date = DateTime.Now,
+            //     Amount = 10,
+            //     Account = "Checking",
+            //     Type = "Deposit"
+            // };
+            // transactions.Add(testTransaction);
+            // var testTransaction1 = new Transaction()
+            // {
+            //     Date = DateTime.Now,
+            //     Amount = 10,
+            //     Account = "Savings",
+            //     Type = "Deposit"
+            // };
+            // transactions.Add(testTransaction1);
+            // var testTransaction2 = new Transaction()
+            // {
+            //     Date = DateTime.Now,
+            //     Amount = 5,
+            //     Account = "Checking",
+            //     Type = "Withdrawal"
+            // };
+            // transactions.Add(testTransaction2);
 
             var keepGoing = true;
 
             while (keepGoing)
             {
+                LoadTransactions(transactions);
+
                 DisplayMenu();
 
                 var choice = Console.ReadLine().ToUpper();
@@ -133,16 +168,21 @@ namespace FirstBankOfSuncoast
                         // int checkingBalance = 
                         // int totalChecking = ComputeCheckingBalance(transactions);
                         Console.WriteLine("");
-                        Console.WriteLine("ACCOUNT BALANCES:");
-                        Console.WriteLine("💸💸💸💸💸💸💸💸💸💸💸💸💸💸💸💸💸💸💸💸💸💸💸💸");
                         Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("ACCOUNT BALANCES:");
+                        Console.WriteLine("");
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine($"Checking Account: ${totalChecking}");
                         Console.WriteLine($"Savings Account: ${totalSavings}");
+                        Console.WriteLine("");
+
                         break;
 
                     case "D":
                         Console.WriteLine("");
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("Would you like to deposit funds to your [C]hecking or [S]avings account? ");
+                        Console.WriteLine("");
                         var depositAccountChoice = Console.ReadLine().ToUpper();
 
                         if (depositAccountChoice == "C")
@@ -155,7 +195,9 @@ namespace FirstBankOfSuncoast
                             checkingDeposit.Type = "Deposit";
                             checkingDeposit.Amount = PromptForInteger("How much would you like to deposit into your checking account? ");
                             Console.WriteLine("");
+                            Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine($"${checkingDeposit.Amount} has been deposited into your checking account. ");
+                            Console.WriteLine("");
 
                             transactions.Add(checkingDeposit);
                         }
@@ -167,9 +209,12 @@ namespace FirstBankOfSuncoast
                             savingsDeposit.Date = DateTime.Now;
                             savingsDeposit.Account = "Savings";
                             savingsDeposit.Type = "Deposit";
+                            Console.ForegroundColor = ConsoleColor.White;
                             savingsDeposit.Amount = PromptForInteger("How much would you like to deposit into your savings account? ");
                             Console.WriteLine("");
+                            Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine($"${savingsDeposit.Amount} has been deposited into your savings account. ");
+                            Console.WriteLine("");
 
                             transactions.Add(savingsDeposit);
                         }
@@ -179,11 +224,14 @@ namespace FirstBankOfSuncoast
                             Console.WriteLine("");
                             Console.WriteLine("❗That is not a valid selection❗");
                         }
+                        SaveTransactions(transactions);
                         break;
 
                     case "W":
                         Console.WriteLine("");
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("Would you like to withdraw funds from your [C]hecking or [S]avings account? ");
+                        Console.WriteLine("");
                         var withdrawalAccountChoice = Console.ReadLine().ToUpper();
 
                         if (withdrawalAccountChoice == "C")
@@ -194,9 +242,12 @@ namespace FirstBankOfSuncoast
                             checkingWithdrawal.Date = DateTime.Now;
                             checkingWithdrawal.Account = "Checking";
                             checkingWithdrawal.Type = "Withdrawal";
+                            Console.ForegroundColor = ConsoleColor.White;
                             checkingWithdrawal.Amount = PromptForInteger("How much would you like to withdraw from your checking account? ");
                             Console.WriteLine("");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine($"${checkingWithdrawal.Amount} has been withdrawn from your checking account. ");
+                            Console.WriteLine("");
 
                             transactions.Add(checkingWithdrawal);
                         }
@@ -208,9 +259,12 @@ namespace FirstBankOfSuncoast
                             savingsWithdrawal.Date = DateTime.Now;
                             savingsWithdrawal.Account = "Savings";
                             savingsWithdrawal.Type = "Withdrawal";
+                            Console.ForegroundColor = ConsoleColor.White;
                             savingsWithdrawal.Amount = PromptForInteger("How much would you like to withdraw from your savings account? ");
                             Console.WriteLine("");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine($"${savingsWithdrawal.Amount} has been withdrawn from your savings account. ");
+                            Console.WriteLine("");
 
                             transactions.Add(savingsWithdrawal);
                         }
@@ -220,13 +274,16 @@ namespace FirstBankOfSuncoast
                             Console.WriteLine("");
                             Console.WriteLine("❗That is not a valid selection❗");
                         }
+                        SaveTransactions(transactions);
                         break;
 
                     case "V":
                         // Description();
+
                         Console.WriteLine("");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("TRANSACTION HISTORY: ");
+
 
                         foreach (var transaction in transactions)
                         {
@@ -278,7 +335,12 @@ namespace FirstBankOfSuncoast
                 }
             }
         }
+
+
+
+
     }
+
 }
 // ALGORITHM
 // Load past transactions from csv file.
