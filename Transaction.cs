@@ -14,7 +14,7 @@ namespace FirstBankOfSuncoast
         public string Type { get; set; }
         public int Amount { get; set; }
 
-        public List<Transaction> Transactions { get; set; } = new List<Transaction>();
+        // public List<Transaction> Transactions { get; set; } = new List<Transaction>();
         //     private string FileName = "transaction.csv";
         //     public void LoadTransactions()
         //     {

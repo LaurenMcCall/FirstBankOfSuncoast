@@ -2,7 +2,7 @@ namespace FirstBankOfSuncoast
 {
     class Database
     {
-        
+
     }
 
 }

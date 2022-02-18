@@ -1,0 +1,17 @@
+/Users/lauren/Desktop/sdg/FirstBankOfSuncoast/bin/Debug/netcoreapp5.0/FirstBankOfSuncoast.deps.json
+/Users/lauren/Desktop/sdg/FirstBankOfSuncoast/bin/Debug/netcoreapp5.0/FirstBankOfSuncoast.runtimeconfig.json
+/Users/lauren/Desktop/sdg/FirstBankOfSuncoast/bin/Debug/netcoreapp5.0/FirstBankOfSuncoast.runtimeconfig.dev.json
+/Users/lauren/Desktop/sdg/FirstBankOfSuncoast/bin/Debug/netcoreapp5.0/FirstBankOfSuncoast.dll
+/Users/lauren/Desktop/sdg/FirstBankOfSuncoast/bin/Debug/netcoreapp5.0/ref/FirstBankOfSuncoast.dll
+/Users/lauren/Desktop/sdg/FirstBankOfSuncoast/bin/Debug/netcoreapp5.0/FirstBankOfSuncoast.pdb
+/Users/lauren/Desktop/sdg/FirstBankOfSuncoast/obj/Debug/netcoreapp5.0/FirstBankOfSuncoast.csproj.AssemblyReference.cache
+/Users/lauren/Desktop/sdg/FirstBankOfSuncoast/obj/Debug/netcoreapp5.0/FirstBankOfSuncoast.GeneratedMSBuildEditorConfig.editorconfig
+/Users/lauren/Desktop/sdg/FirstBankOfSuncoast/obj/Debug/netcoreapp5.0/FirstBankOfSuncoast.AssemblyInfoInputs.cache
+/Users/lauren/Desktop/sdg/FirstBankOfSuncoast/obj/Debug/netcoreapp5.0/FirstBankOfSuncoast.AssemblyInfo.cs
+/Users/lauren/Desktop/sdg/FirstBankOfSuncoast/obj/Debug/netcoreapp5.0/FirstBankOfSuncoast.csproj.CoreCompileInputs.cache
+/Users/lauren/Desktop/sdg/FirstBankOfSuncoast/obj/Debug/netcoreapp5.0/FirstBankOfSuncoast.dll
+/Users/lauren/Desktop/sdg/FirstBankOfSuncoast/obj/Debug/netcoreapp5.0/ref/FirstBankOfSuncoast.dll
+/Users/lauren/Desktop/sdg/FirstBankOfSuncoast/obj/Debug/netcoreapp5.0/FirstBankOfSuncoast.pdb
+/Users/lauren/Desktop/sdg/FirstBankOfSuncoast/obj/Debug/netcoreapp5.0/FirstBankOfSuncoast.genruntimeconfig.cache
+/Users/lauren/Desktop/sdg/FirstBankOfSuncoast/bin/Debug/netcoreapp5.0/CsvHelper.dll
+/Users/lauren/Desktop/sdg/FirstBankOfSuncoast/obj/Debug/netcoreapp5.0/FirstBankOfSuncoast.csproj.CopyComplete
